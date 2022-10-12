@@ -1,0 +1,11 @@
+Package: wqgl
+Type: Package
+Title: Water Quality Screening Functions
+Version: 0.1.0
+Author: Who wrote it
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: Guideline screening functions. 
+    Use four spaces when indenting paragraphs within the Description.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
