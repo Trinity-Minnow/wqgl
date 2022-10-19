@@ -1,33 +1,30 @@
-#' Title
+#' Adding Screening Columns to Water Quality Data
 #'
-#' @param data
-#' @param params
-#' @param value
-#' @param gls
+#' @param data Data frame of water quality data
+#' @param params Vector of water quality parameters
+#' @param value Name of values column
+#' @param gls Which guidelines (BC, CCME)
 #'
-#' @return
+#' @return A data frame with the appended screening columns.
 #' @export
 #'
 #' @examples
 
-screenCols<-function(data,params,value,gls="BC"){
-  #data=dat1
-  #params=params
-  #value="value"
+screenCols<-function(data=NA,params=NA,value=NA,gls="BC"){
 
   dat2<-data%>%
-    pivot_wider(names_from=param,values_from=value) %>%
-    mutate(`Hardness (as CaCO3)_screen`=subdl(`Hardness (as CaCO3)`),
+    tidyr::pivot_wider(names_from=param,values_from=value) %>%
+    dplyr::mutate(`Hardness (as CaCO3)_screen`=subdl(`Hardness (as CaCO3)`),
            `Chloride (Cl)_screen`=subdl(`Chloride (Cl)`),
            `pH, Field_screen`=`pH, Field`,
            `Dissolved Organic Carbon_screen`=`Dissolved Organic Carbon`,
            `Temperature, Field_screen`=`Temperature, Field`
     ) %>%
-    pivot_longer(names_to="param",values_to="value",params) %>%
-    drop_na(value) %>%
-    group_by(station) %>%
+    tidyr::pivot_longer(names_to="param",values_to="value",params) %>%
+    tidyr::drop_na(value) %>%
+    dplyr::group_by(station) %>%
     # take conservative hardness
-    mutate(`Hardness (as CaCO3)_screen`=
+    dplyr::mutate(`Hardness (as CaCO3)_screen`=
              ifelse(is.na(`Hardness (as CaCO3)_screen`),
                     min(`Hardness (as CaCO3)_screen`,na.rm=T),`Hardness (as CaCO3)_screen`),
            # fill ph values
@@ -48,16 +45,16 @@ screenCols<-function(data,params,value,gls="BC"){
                     min(`Dissolved Organic Carbon_screen`,na.rm=T),
                     `Dissolved Organic Carbon_screen`)) %>%
     # fill in temperature variables
-    group_by(station, month) %>%
-    mutate(`Temperature, Field_screen`=ifelse(is.na(`Temperature, Field_screen`),
+    dplyr::group_by(station, month) %>%
+    dplyr::mutate(`Temperature, Field_screen`=ifelse(is.na(`Temperature, Field_screen`),
                                               max(`Temperature, Field_screen`,na.rm=T),
                                               `Temperature, Field_screen`)) %>% # will get inf is you have no temp for that station
-    ungroup() %>%
-    group_by(month) %>%
-    mutate(`Temperature, Field_screen`=ifelse(is.infinite(`Temperature, Field_screen`),
+    dplyr::ungroup() %>%
+    dplyr::group_by(month) %>%
+    dplyr::mutate(`Temperature, Field_screen`=ifelse(is.infinite(`Temperature, Field_screen`),
                                               max(`Temperature, Field_screen`,na.rm=T),`Temperature, Field_screen`)) %>%  # replace with max of whole dataset
-    ungroup() %>%
-    mutate(
+    dplyr::ungroup() %>%
+    dplyr::mutate(
       `Hardness (as CaCO3)_screen`=ifelse(is.infinite(`Hardness (as CaCO3)_screen`),
                                           min(`Hardness (as CaCO3)_screen`,na.rm=T),`Hardness (as CaCO3)_screen`),
       `Chloride (Cl)_screen`=ifelse(is.infinite(`Chloride (Cl)_screen`),
@@ -68,7 +65,11 @@ screenCols<-function(data,params,value,gls="BC"){
                                    min(`pH, Field_screenMin`,na.rm=T),`pH, Field_screenMin`),
       `pH, Field_screenMax`=ifelse(is.infinite(`pH, Field_screenMax`),
                                    min(`pH, Field_screenMax`,na.rm=T),`pH, Field_screenMax`)) %>%
-    mutate(temp_ph=gl.temp.ph(gl=gls,pH=as.numeric(`pH, Field_screenMax`),temp=as.numeric(`Temperature, Field_screen`)))
+    dplyr::mutate(temp_ph=glTempPh(gl=gls,pH=as.numeric(`pH, Field_screenMax`),
+                                   temp=as.numeric(`Temperature, Field_screen`))) %>%
+    dplyr::mutate(`pH, Field_screenMin`=as.numeric(`pH, Field_screenMin`))
+  # testing
+
 
   return(dat2)
 }
