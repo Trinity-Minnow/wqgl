@@ -4,7 +4,7 @@
 \alias{addGLlables}
 \title{Add Guideline Values to Table}
 \usage{
-addGLlables(labels = NA, pl = NA, pltcol = NA)
+addGLlables(labels = NA, pl = NA, pltcol = NA, labsep = 0.1)
 }
 \arguments{
 \item{labels}{vector of labels to add.}
@@ -12,6 +12,8 @@ addGLlables(labels = NA, pl = NA, pltcol = NA)
 \item{pl}{plot that labels will be added to.}
 
 \item{pltcol}{Vector of colors for the labels.}
+
+\item{labsep}{Multiplier to separate text labels}
 }
 \value{
 Plot with labels added.

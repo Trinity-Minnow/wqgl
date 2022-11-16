@@ -4,19 +4,16 @@
 #' @param labels vector of labels to add.
 #' @param pl plot that labels will be added to.
 #' @param pltcol Vector of colors for the labels.
+#' @param labsep Multiplier to separate text labels
 #'
 #' @return Plot with labels added.
 #' @export
 #'
 #' @examples
 
-addGLlables<-function(labels=NA,pl=NA,pltcol=NA){
+addGLlables<-function(labels=NA,pl=NA,pltcol=NA,labsep=0.1){
 
   p1=pl
-  #pltcol<-labeldf$pltcol
-
-  #labels<-labeldf$label
-
 
   # determine y mins and maxes
   ymax<-ggplot_build(p1)$layout$panel_params[[1]]$y.range[2]
@@ -38,7 +35,7 @@ addGLlables<-function(labels=NA,pl=NA,pltcol=NA){
     # l=1
     xnum<-mindate+as.numeric(maxdate-mindate)*0.02
 
-    ynum<-(ymax-((rnge)*0.07*l))
+    ynum<-(ymax-((rnge)*labsep*l))
     ynum=inv(ynum)
 
     # ynum<-maxy-(maxy*(0.1*l))

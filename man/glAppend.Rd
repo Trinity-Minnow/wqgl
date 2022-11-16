@@ -4,7 +4,6 @@
 \alias{glAppend}
 \title{Add Guideline Values to Table}
 \usage{
-<<<<<<< HEAD
 glAppend(dat1 = NA, Location = NA, glType = NA, name = NA)
 }
 \arguments{
@@ -15,12 +14,6 @@ glAppend(dat1 = NA, Location = NA, glType = NA, name = NA)
 \item{Type}{Type of guidelines. Current options include: Long-term chronic, Short-term acute, Teck-BM1,Teck-BM2, and Teck-BM3. The data frame allgls contains all guidelines currently available.}
 
 \item{Name}{The name to use for resulting guideline column. Will result in two columns with "_upper" and "_lower" appended to the name.}
-=======
-glAppend(dat1 = NA, Location = NA, Type = NA, name = NA)
-}
-\arguments{
-\item{Type}{}
->>>>>>> e905f422e5d30e210e5616c1da959063189999bf
 }
 \value{
 A dataframe with screening values

@@ -68,10 +68,7 @@ screenCols<-function(data=NA,params=NA,value=NA,gls="BC"){
     dplyr::mutate(temp_ph=glTempPh(gl=gls,pH=as.numeric(`pH, Field_screenMax`),
                                    temp=as.numeric(`Temperature, Field_screen`))) %>%
     dplyr::mutate(`pH, Field_screenMin`=as.numeric(`pH, Field_screenMin`))
-<<<<<<< HEAD
   # testing
-=======
->>>>>>> e905f422e5d30e210e5616c1da959063189999bf
 
 
   return(dat2)

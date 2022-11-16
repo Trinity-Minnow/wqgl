@@ -14,7 +14,7 @@
 #' @examples
 
 gltextlab<- function(x, vallist, gllist, gllabel, glcol,Unit, adj=0.6) {
-
+  #
   # get the gls dataframe
   glfn = data.frame(gl=gllist,
                     label=gllabel,
