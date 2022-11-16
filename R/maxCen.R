@@ -5,7 +5,7 @@
 #' @param format Whether to format the output to the desired number of digits.
 #' @param digits Number of significant digits.
 #'
-#' @return Minimum value
+#' @return Maximum value
 #' @export
 #'
 #' @examples
