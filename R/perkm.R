@@ -12,7 +12,7 @@
 #' @examples
 
 perkm<-function(vals,digit=3,probs,format=T){
-  x2<-x[is.na(x)==F]
+  x2<-vals[is.na(vals)==F]
   v1<-subdl(x2)
   c1<-grepl("<",x2)
   if(all(c1==T)){

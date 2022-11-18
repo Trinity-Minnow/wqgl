@@ -12,7 +12,7 @@
 
 meankm<-function(vals,digit=3,format=F){
   options(scipen=999)
-  x2<-x[is.na(x)==F]
+  x2<-vals[is.na(vals)==F]
   v1<-subdl(x2)
   c1<-grepl("<",x2)
   if(length(v1)==0){m1<-NA} else{
