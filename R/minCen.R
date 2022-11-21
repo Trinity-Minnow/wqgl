@@ -16,6 +16,6 @@ minCen<-function(vals,format=F,digits=3) {
 
   minval<-df1[which(df1$val2==min(df1$val2,na.rm=T)),"vals"][1]
 
-  if(format==T){minval=forcenval2(minval,digits)} else{minval=as.character(minval)}
+  if(format==T){minval=formatCenval(minval,digits)} else{minval=as.character(minval)}
   return(minval)
 }
