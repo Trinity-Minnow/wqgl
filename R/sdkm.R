@@ -24,7 +24,7 @@ sdkm<-function(vals,digit=3,format=T){
     sfit = summary(survmodel, rmean = "individual")
     m1<-maxy-as.numeric(sfit$table[5])
 
-    model<-cenfit(v1,c1)
+    model<-NADA::cenfit(v1,c1)
 
     sd1<-sd(model)
     #rSEtemp[count]<-sd(model)/sqrt(nvals)
