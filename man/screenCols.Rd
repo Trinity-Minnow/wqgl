@@ -7,9 +7,9 @@
 screenCols(data = NA, params = NA, value = NA, gls = "BC")
 }
 \arguments{
-\item{data}{Data frame of water quality data}
+\item{data}{Data frame of water quality data. Must have "param" column with the parameter names. Also need "station", and "month" columns.}
 
-\item{params}{Vector of water quality parameters}
+\item{params}{Vector of unique water quality parameters in your "param" column.}
 
 \item{value}{Name of values column}
 
