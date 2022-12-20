@@ -15,8 +15,7 @@ maxCen<-function(vals,format=F,digits=3) {
     maxval<-paste0("<",subdl(min(vals,na.rm=T)))
   } else{
     #maxval=max(subdl(vals),na.rm=T)
-    maxval=max(vals[!grepl("<",vals)])
-
+    maxval=max(as.numeric(vals[!grepl("<",vals)]))
   }
   if(format==T){maxval=formatCenval(maxval,digits)} else{maxval=as.character(maxval)}
   return(maxval)

@@ -2,9 +2,9 @@
 #'
 #' @description Calculate CCME Water Quality Index
 #' @param dat Data frame with water quality or sediment quality data.
-#' @param group character vector with column(s) for grouping.
-#' @param gl name of guideline column
-#' @param param name of params column
+#' @param group Character vector with column(s) for grouping.
+#' @param gl Name of guideline column
+#' @param param Name of params column
 #'
 #' @return Original dataframe with sediment quality columns add to the end
 #' @export

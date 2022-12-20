@@ -9,11 +9,11 @@ wqIndex(dat = NA, group = NA, gl = "gl", param = "param")
 \arguments{
 \item{dat}{Data frame with water quality or sediment quality data.}
 
-\item{group}{character vector with column(s) for grouping.}
+\item{group}{Character vector with column(s) for grouping.}
 
-\item{gl}{name of guideline column}
+\item{gl}{Name of guideline column}
 
-\item{param}{name of params column}
+\item{param}{Name of params column}
 }
 \value{
 Original dataframe with sediment quality columns add to the end
