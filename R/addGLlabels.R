@@ -11,7 +11,11 @@
 #'
 #' @examples
 
-addGLlables<-function(labels=NA,pl=NA,pltcol=NA,labsep=0.1){
+addGLlables<-function(labels=NA,
+                      pl=NA,
+                      pltcol=NA,
+                      labsep=0.1,
+                      X.date=T){
 
   p1=pl
 
@@ -23,13 +27,12 @@ addGLlables<-function(labels=NA,pl=NA,pltcol=NA,labsep=0.1){
 
   # determine x mins and maxes
   xmax<-ggplot_build(p1)$layout$panel_params[[1]]$x.range[2]
-  maxdate<-as.Date(xmax,origin='1970-01-01')
-
   xmin<-ggplot_build(p1)$layout$panel_params[[1]]$x.range[1]
-  mindate<-as.Date(xmin,origin='1970-01-01')
 
-  #maxdate<-as.Date(maxd)
-  #mindate<-as.Date(mind)
+  if(x.date==T){
+    maxdate<-as.Date(xmax,origin='1970-01-01')
+    mindate<-as.Date(xmin,origin='1970-01-01')
+  }
 
   for (l in 1:length(labels)){
     # l=1

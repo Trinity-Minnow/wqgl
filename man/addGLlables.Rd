@@ -4,7 +4,7 @@
 \alias{addGLlables}
 \title{Add Guideline Values to Table}
 \usage{
-addGLlables(labels = NA, pl = NA, pltcol = NA, labsep = 0.1)
+addGLlables(labels = NA, pl = NA, pltcol = NA, labsep = 0.1, X.date = T)
 }
 \arguments{
 \item{labels}{vector of labels to add.}
