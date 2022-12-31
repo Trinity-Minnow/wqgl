@@ -5,6 +5,7 @@
 #' @param pl plot that labels will be added to.
 #' @param pltcol Vector of colors for the labels.
 #' @param labsep Multiplier to separate text labels
+#' @param xdate Logical stating if x is a date axis or not.
 #'
 #' @return Plot with labels added.
 #' @export
@@ -18,7 +19,6 @@ addGLlables<-function(labels=NA,
                       xdate=T){
 
   p1=pl
-
   # determine y mins and maxes
   ymax<-ggplot_build(p1)$layout$panel_params[[1]]$y.range[2]
   ymin<-ggplot_build(p1)$layout$panel_params[[1]]$y.range[1]

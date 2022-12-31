@@ -4,7 +4,7 @@
 \alias{addGLlables}
 \title{Add Guideline Values to Table}
 \usage{
-addGLlables(labels = NA, pl = NA, pltcol = NA, labsep = 0.1, X.date = T)
+addGLlables(labels = NA, pl = NA, pltcol = NA, labsep = 0.1, xdate = T)
 }
 \arguments{
 \item{labels}{vector of labels to add.}
@@ -14,6 +14,8 @@ addGLlables(labels = NA, pl = NA, pltcol = NA, labsep = 0.1, X.date = T)
 \item{pltcol}{Vector of colors for the labels.}
 
 \item{labsep}{Multiplier to separate text labels}
+
+\item{xdate}{Logical stating if x is a date axis or not.}
 }
 \value{
 Plot with labels added.
