@@ -18,7 +18,6 @@ addGLlables<-function(labels=NA,
                       xdate=T){
 
   p1=pl
-
   # determine y mins and maxes
   ymax<-ggplot_build(p1)$layout$panel_params[[1]]$y.range[2]
   ymin<-ggplot_build(p1)$layout$panel_params[[1]]$y.range[1]
